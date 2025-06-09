@@ -1,0 +1,27 @@
+{
+    "key.diropoint.open_waypoint_screen": "Open Waypoint Screen",
+    "key.diropoint.quick_add_waypoint": "Quick Add Waypoint",
+    "key.diropoint.toggle_visibility": "Toggle Waypoint Visibility",
+    "key.diropoint.teleport_last": "Teleport to Last Waypoint",
+    "category.diropoint.general": "DiroPoint",
+    
+    "text.autoconfig.diropoint.title": "DiroPoint Settings",
+    "text.autoconfig.diropoint.option.showWaypointDistance": "Show Waypoint Distance",
+    "text.autoconfig.diropoint.option.showWaypointDistance.@Tooltip": "Show the distance to waypoints in the world",
+    "text.autoconfig.diropoint.option.showWaypointCoordinates": "Show Waypoint Coordinates",
+    "text.autoconfig.diropoint.option.showWaypointCoordinates.@Tooltip": "Show the coordinates of waypoints in the list",
+    "text.autoconfig.diropoint.option.maxWaypoints": "Maximum Waypoints",
+    "text.autoconfig.diropoint.option.maxWaypoints.@Tooltip": "Maximum number of waypoints that can be created",
+    "text.autoconfig.diropoint.option.enableSounds": "Enable Sounds",
+    "text.autoconfig.diropoint.option.enableSounds.@Tooltip": "Play sounds when adding/removing waypoints",
+    "text.autoconfig.diropoint.option.waypointScale": "Waypoint Scale",
+    "text.autoconfig.diropoint.option.waypointScale.@Tooltip": "Size of waypoint markers in the world",
+    "text.autoconfig.diropoint.option.waypointColor": "Waypoint Color",
+    "text.autoconfig.diropoint.option.waypointColor.@Tooltip": "Default color for new waypoints",
+    "text.autoconfig.diropoint.option.showInWorld": "Show in World",
+    "text.autoconfig.diropoint.option.showInWorld.@Tooltip": "Show waypoint markers in the world",
+    "text.autoconfig.diropoint.option.showOnMap": "Show on Map",
+    "text.autoconfig.diropoint.option.showOnMap.@Tooltip": "Show waypoint markers on the map (if available)",
+    "text.autoconfig.diropoint.option.renderDistance": "Render Distance",
+    "text.autoconfig.diropoint.option.renderDistance.@Tooltip": "Maximum distance to render waypoint markers"
+} 

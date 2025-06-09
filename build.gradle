@@ -38,15 +38,15 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-    it.options.release = 21
+    it.options.release = 17
 }
 
 // Verify Java version
 tasks.register('checkJavaVersion') {
     doFirst {
         def javaVersion = JavaVersion.current()
-        if (javaVersion < JavaVersion.VERSION_21) {
-            throw new GradleException("This build requires Java 21 or higher! You are using Java ${javaVersion}. Please install Java 21 and update your JAVA_HOME environment variable.")
+        if (javaVersion < JavaVersion.VERSION_17) {
+            throw new GradleException("This build requires Java 17 or higher! You are using Java ${javaVersion}. Please install Java 17 and update your JAVA_HOME environment variable.")
         }
     }
 }
@@ -59,12 +59,12 @@ tasks.named('build') {
 java {
     withSourcesJar()
     
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
     
-    // Explicitly set toolchain to Java 21
+    // Explicitly set toolchain to Java 17
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
 
