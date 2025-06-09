@@ -27,16 +27,16 @@ export JAVA_OPTS="-Xmx${MAX_MEM}G -Xms${INIT_MEM}G -XX:MaxMetaspaceSize=512M -XX
 
 # Check for Java
 if ! command -v java &> /dev/null; then
-    echo -e "${RED}Java not found. Please run ./install_java21.sh first${NC}"
+    echo -e "${RED}Java not found. Please run ./install_java17.sh first${NC}"
     exit 1
 fi
 
 # Verify Java version
 JAVA_VER=$(java -version 2>&1 | head -n 1)
-if [[ ! $JAVA_VER =~ "21" ]]; then
-    echo -e "${RED}Warning: Java 21 is required. Current version:${NC}"
+if [[ ! $JAVA_VER =~ "17" ]]; then
+    echo -e "${RED}Warning: Java 17 is required. Current version:${NC}"
     echo "$JAVA_VER"
-    echo -e "${YELLOW}Please run ./install_java21.sh to install Java 21${NC}"
+    echo -e "${YELLOW}Please run ./install_java17.sh to install Java 17${NC}"
     exit 1
 fi
 

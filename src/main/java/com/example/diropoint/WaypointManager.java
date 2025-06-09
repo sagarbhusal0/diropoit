@@ -5,14 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
-import net.minecraft.server.command.ServerCommandSource;
-import net.minecraft.text.Text;
 import net.minecraft.world.dimension.DimensionType;
-import net.minecraft.world.dimension.DimensionTypes;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.util.Identifier;
-
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -45,8 +38,9 @@ public class WaypointManager {
 
     public static void addWaypoint(String name, int x, int y, int z) {
         ClientPlayerEntity player = MinecraftClient.getInstance().player;
-        if (player == null) return;
-        
+        if (player == null)
+            return;
+
         DimensionType dimension = player.getWorld().getDimension();
         Waypoint waypoint = new Waypoint(name, x, y, z, dimension);
         getInstance().addWaypoint(waypoint);
@@ -83,12 +77,11 @@ public class WaypointManager {
             return;
         }
 
-        String command = String.format("/tp %d %d %d", 
-            waypoint.getX(), 
-            waypoint.getY(), 
-            waypoint.getZ()
-        );
-        
+        String command = String.format("/tp %d %d %d",
+                waypoint.getX(),
+                waypoint.getY(),
+                waypoint.getZ());
+
         player.networkHandler.sendCommand(command.substring(1)); // Remove the leading '/'
     }
 
@@ -111,7 +104,8 @@ public class WaypointManager {
         }
         try {
             FileReader reader = new FileReader(WAYPOINTS_FILE);
-            Type type = new TypeToken<Map<DimensionType, List<Waypoint>>>(){}.getType();
+            Type type = new TypeToken<Map<DimensionType, List<Waypoint>>>() {
+            }.getType();
             waypointsByDimension = GSON.fromJson(reader, type);
             reader.close();
         } catch (IOException e) {
