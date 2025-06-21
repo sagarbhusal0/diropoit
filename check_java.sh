@@ -2,41 +2,37 @@
 
 # Colors for output
 GREEN='\033[0;32m'
-BLUE='\033[0;34m'
-YELLOW='\033[1;33m'
 RED='\033[0;31m'
+YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
-echo -e "${BLUE}Checking Java installation...${NC}"
-echo
+echo -e "${YELLOW}Checking for Java 17...${NC}"
 
-# Function to check if Java 17 is installed
+# Function to check if Java 17 is the current version
 check_java_17() {
-    java_version=$(java -version 2>&1 | grep "version" | awk -F '"' '{print $2}' | awk -F '.' '{print $1"."$2}')
-    if [[ "$java_version" == "17."* ]]; then
-        return 0
-    else
-        return 1
+    if command -v java &> /dev/null; then
+        java_version=$(java -version 2>&1 | awk -F '"' '/version/ {print $2}')
+        if [[ "$java_version" == "17."* ]]; then
+            return 0
+        fi
     fi
+    return 1
 }
 
-echo -e "${YELLOW}1. Checking Java version:${NC}"
-echo "------------------------"
 if check_java_17; then
-    echo -e "${GREEN}Found Java 17: $(java -version 2>&1 | head -n 1)${NC}"
+    echo -e "${GREEN}Java 17 is installed and configured correctly.${NC}"
+    java -version
 else
-    echo -e "${RED}Java 17 not found. Current version:${NC}"
-    java -version 2>&1
+    echo -e "${RED}Java 17 not found or not set as the default Java version.${NC}"
+    echo -e "${YELLOW}This project requires Java 17.${NC}"
+    if command -v java &> /dev/null; then
+        echo "Current version is:"
+        java -version
+    fi
     echo
-    echo -e "${YELLOW}To install Java 17:${NC}"
-    echo "------------------------"
-    echo "Windows: Download from https://adoptium.net/temurin/releases/?version=17"
-    echo "Ubuntu/Debian: sudo apt install openjdk-17-jdk"
-    echo "macOS: brew install openjdk@17"
-    echo "Fedora/RHEL: sudo dnf install java-17-openjdk-devel"
-    echo "Or run ./install_java17.sh (Linux only)"
+    echo "Please install Java 17 and ensure it's the default or set your JAVA_HOME."
+    echo "You can try running the ./install_java17.sh script on supported Linux systems."
 fi
-echo
 
 echo -e "${YELLOW}2. Checking Java compiler version:${NC}"
 echo "------------------------"
